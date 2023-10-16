@@ -7,7 +7,7 @@
 | nickname                      | string  | null: false               |
 | email                         | string  | null: false, unique: true |
 | password                      | string  | null: false               |
-| password_confirmation         | string  | null: false               |
+| encrypted_password            | string  | null: false               |
 | Chinese_character_family_name | string  | null: false               |
 | Chinese_character_first_name  | string  | null: false               |
 | Katakana_family_name          | string  | null: false               |
