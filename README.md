@@ -2,19 +2,17 @@
 
 ## users テーブル
 
-| Column                        | Type    | Options                   |
-| ----------------------------- | ------- | ------------------------- |
-| nickname                      | string  | null: false               |
-| email                         | string  | null: false, unique: true |
-| password                      | string  | null: false               |
-| encrypted_password            | string  | null: false               |
-| chinese_character_family_name | string  | null: false               |
-| chinese_character_first_name  | string  | null: false               |
-| katakana_family_name          | string  | null: false               |
-| katakana_first_name           | string  | null: false               |
-| birth_year                    | integer | null: false               |
-| birth_month                   | integer | null: false               |
-| birth_date                    | integer | null: false               |
+| Column                           | Type    | Options                   |
+| -------------------------------- | ------- | ------------------------- |
+| nickname                         | string  | null: false               |
+| email                            | string  | null: false, unique: true |
+| password                         | string  | null: false               |
+| encrypted_password               | string  | null: false               |
+| chinese_character_family_name    | string  | null: false               |
+| chinese_character_first_name     | string  | null: false               |
+| katakana_family_name             | string  | null: false               |
+| katakana_first_name              | string  | null: false               |
+| date_of_birth                    | date    | null: false               |
 
 ### Association
 
