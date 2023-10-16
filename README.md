@@ -45,7 +45,6 @@
 | ------------------- | ---------- | ------------------------------ |
 | user                | references | null: false, foreign_key: true |
 | item                | references | null: false, foreign_key: true |
-| address             | references | null: false, foreign_key: true |
 
 ### Association
 
@@ -64,6 +63,7 @@
 | building_name    | string     |                                |
 | telephone_number | integer    | null: false                    |
 | user             | references | null: false, foreign_key: true |
+| order            | references | null: false, foreign_key: true |
 
 ### Association
 
