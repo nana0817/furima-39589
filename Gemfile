@@ -67,6 +67,10 @@ group :development do
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
   gem 'rubocop', require: false
+  gem 'rubocop-capybara'
+  gem 'rubocop-factory_bot'
+  gem 'rubocop-rails'
+  gem 'rubocop-rspec'
 end
 
 group :test do
