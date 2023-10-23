@@ -5,7 +5,7 @@ class User < ApplicationRecord
   validates :nickname, presence: true, length: { maximum: 40 }
 
   # パスワードのバリデーション
-  PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i.freeze
+  PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i
   validates :password, format: { with: PASSWORD_REGEX, message: 'には半角英数字両方を含めて設定してください' }
 
   # フルネーム(全角)のバリデーション
@@ -20,7 +20,6 @@ class User < ApplicationRecord
     validates :first_name_kana
   end
 
-# 生年月日のバリデーション
+  # 生年月日のバリデーション
   validates :date_of_birth, presence: true
-
 end
