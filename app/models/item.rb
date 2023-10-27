@@ -11,7 +11,7 @@ class Item < ApplicationRecord
 
   has_one_attached :image
   
-  
+
   # バリデーション
   with_options presence: true do
     validates :item_name  # 商品名
@@ -33,6 +33,7 @@ class Item < ApplicationRecord
     validates :shipping_time_id  # 発送までの日数
   end
 
-  validates :price,            presence: true, length: { in: 300..9999999 }, format: { with: /\A[0-9]+\z/, message: 'には半角数字を使用してください' }  # 価格
+  validates :price, presence: true, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999, 
+                                                    message: 'は半角数字で¥300~¥9,999,999の間のみ入力できます' }  # 価格
 
 end
