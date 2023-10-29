@@ -28,7 +28,7 @@ RSpec.describe Item, type: :model do
       it 'item_nameが41文字以上では出品できない' do
         @item.item_name = Faker::Lorem.characters(number: 41)
         @item.valid?
-        expect(@item.errors.full_messages).to include("Item name is too long (maximum is 40 characters)")
+        expect(@item.errors.full_messages).to include('Item name is too long (maximum is 40 characters)')
       end
 
       it 'item_descriptionが空では出品できない' do
@@ -40,7 +40,7 @@ RSpec.describe Item, type: :model do
       it 'item_descriptionが1,001文字以上では出品できない' do
         @item.item_description = Faker::Lorem.characters(number: 1001)
         @item.valid?
-        expect(@item.errors.full_messages).to include("Item description is too long (maximum is 1000 characters)")
+        expect(@item.errors.full_messages).to include('Item description is too long (maximum is 1000 characters)')
       end
 
       it 'category_idが空では出品できない' do
@@ -112,25 +112,25 @@ RSpec.describe Item, type: :model do
       it 'priceが299以下では出品できない' do
         @item.price = 299
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price は半角数字で¥300~¥9,999,999の間のみ入力できます")
+        expect(@item.errors.full_messages).to include('Price は半角数字で¥300~¥9,999,999の間のみ入力できます')
       end
 
       it 'priceが10,000,000以上では出品できない' do
-        @item.price = 10000000
+        @item.price = 10_000_000
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price は半角数字で¥300~¥9,999,999の間のみ入力できます")
+        expect(@item.errors.full_messages).to include('Price は半角数字で¥300~¥9,999,999の間のみ入力できます')
       end
 
       it 'priceが全角数字では出品できない' do
         @item.price = '３００'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price は半角数字で¥300~¥9,999,999の間のみ入力できます")
+        expect(@item.errors.full_messages).to include('Price は半角数字で¥300~¥9,999,999の間のみ入力できます')
       end
 
       it 'userが紐づいていないと出品できない' do
         @item.user = nil
         @item.valid?
-        expect(@item.errors.full_messages).to include("User must exist")
+        expect(@item.errors.full_messages).to include('User must exist')
       end
     end
   end

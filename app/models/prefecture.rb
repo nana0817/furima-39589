@@ -53,5 +53,4 @@ class Prefecture < ActiveHash::Base
   # アソシエーション
   include ActiveHash::Associations
   has_many :items
-
 end
