@@ -13,13 +13,11 @@ class Item < ApplicationRecord
   
 
   # バリデーション
-  with_options presence: true do
-    validates :item_name  # 商品名
+  validates :image,            presence: true  # 商品の画像
 
-    validates :item_description  # 商品の説明
+  validates :item_name,        presence: true, length: { maximum: 40 }  # 商品名
 
-    validates :image  # 商品の画像
-  end
+  validates :item_description, presence: true, length: { maximum: 1000 }  # 商品の説明
 
   with_options numericality: { other_than: 1, message: "can't be blank" } do
     validates :category_id       # カテゴリー

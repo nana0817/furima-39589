@@ -1,8 +1,10 @@
 <div class="items-sell-contents">
+  <%# ヘッダー %>
   <header class="items-sell-header">
     <%= link_to image_tag('furima-logo-color.png' , size: '185x50'), "/" %>
-
   </header>
+
+  <%# フォーム入力部分 %>
   <div class="items-sell-main">
     <h2 class="items-sell-title">商品の情報を入力</h2>
     <%= form_with model: @item, url: items_path, local: true do |f| %>
@@ -30,14 +32,14 @@
           商品名
           <span class="indispensable">必須</span>
         </div>
-        <%= f.text_area :item_name, class:"items-text", id:"item-name", placeholder:"商品名（必須 40文字まで)", maxlength:"40" %>
+        <%= f.text_area :item_name, class:"items-text", id:"item-name", placeholder:"商品名（必須 40文字まで)" %>
         <div class="items-explain">
           <div class="weight-bold-text">
             商品の説明
             <span class="indispensable">必須</span>
           </div>
           <%= f.text_area :item_description, class:"items-text", id:"item-info", placeholder:"商品の説明（必須 1,000文字まで）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。" ,
-                                             rows:"7" ,maxlength:"1000" %>
+                                             rows:"7" %>
         </div>
       </div>
       <%# /商品名と商品説明 %>
@@ -93,6 +95,7 @@
           <a class="question" href="#">?</a>
         </div>
         <div>
+          <%# 価格(入力) %>
           <div class="price-content">
             <div class="price-text">
               <span>価格</span>
@@ -101,12 +104,14 @@
             <span class="sell-yen">¥</span>
             <%= f.text_field :price, class:"price-input", id:"item-price", placeholder:"例）300" %>
           </div>
+          <%# 販売手数料(自動) %>
           <div class="price-content">
             <span>販売手数料 (10%)</span>
             <span>
               <span id='add-tax-price'></span>円
             </span>
           </div>
+          <%# 販売利益(自動) %>
           <div class="price-content">
             <span>販売利益</span>
             <span>
@@ -145,6 +150,7 @@
     </div>
   <% end %>
 
+  <%# フッター %>
   <footer class="items-sell-footer">
     <ul class="menu">
       <li><a href="#">プライバシーポリシー</a></li>
@@ -156,4 +162,5 @@
       ©︎Furima,Inc.
     </p>
   </footer>
+
 </div>
