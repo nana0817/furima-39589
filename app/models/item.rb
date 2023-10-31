@@ -30,6 +30,7 @@ class Item < ApplicationRecord
     validates :shipping_time_id  # 発送までの日数
   end
 
-  validates :price, presence: true, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999,
-                                                    message: 'は半角数字で¥300~¥9,999,999の間のみ入力できます' }  # 価格
+  validates :price, numericality: { only_integer: true, message: 'is invalid. Input integer with half-width numbers' }  # 価格
+  validates :price, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999, message: 'is out of setting range' }
+
 end
