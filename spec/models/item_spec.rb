@@ -46,85 +46,91 @@ RSpec.describe Item, type: :model do
       it 'category_idが空では出品できない' do
         @item.category_id = ''
         @item.valid?
-        expect(@item.errors.full_messages).to include("Category can't be blank")
+        expect(@item.errors.full_messages).to include('Category is invalid. Please select the appropriate value')
       end
 
       it 'category_idが1では出品できない' do
         @item.category_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Category can't be blank")
+        expect(@item.errors.full_messages).to include('Category is invalid. Please select the appropriate value')
       end
 
       it 'condition_idが空では出品できない' do
         @item.condition_id = ''
         @item.valid?
-        expect(@item.errors.full_messages).to include("Condition can't be blank")
+        expect(@item.errors.full_messages).to include('Condition is invalid. Please select the appropriate value')
       end
 
       it 'condition_idが1では出品できない' do
         @item.condition_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Condition can't be blank")
+        expect(@item.errors.full_messages).to include('Condition is invalid. Please select the appropriate value')
       end
 
       it 'shipping_fee_idが空では出品できない' do
         @item.shipping_fee_id = ''
         @item.valid?
-        expect(@item.errors.full_messages).to include("Shipping fee can't be blank")
+        expect(@item.errors.full_messages).to include('Shipping fee is invalid. Please select the appropriate value')
       end
 
       it 'shipping_fee_idが1では出品できない' do
         @item.shipping_fee_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Shipping fee can't be blank")
+        expect(@item.errors.full_messages).to include('Shipping fee is invalid. Please select the appropriate value')
       end
 
       it 'prefecture_idが空では出品できない' do
         @item.prefecture_id = ''
         @item.valid?
-        expect(@item.errors.full_messages).to include("Prefecture can't be blank")
+        expect(@item.errors.full_messages).to include('Prefecture is invalid. Please select the appropriate value')
       end
 
       it 'prefecture_idが1では出品できない' do
         @item.prefecture_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Prefecture can't be blank")
+        expect(@item.errors.full_messages).to include('Prefecture is invalid. Please select the appropriate value')
       end
 
       it 'shipping_time_idが空では出品できない' do
         @item.shipping_time_id = ''
         @item.valid?
-        expect(@item.errors.full_messages).to include("Shipping time can't be blank")
+        expect(@item.errors.full_messages).to include('Shipping time is invalid. Please select the appropriate value')
       end
 
       it 'shipping_time_idが1では出品できない' do
         @item.shipping_time_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Shipping time can't be blank")
+        expect(@item.errors.full_messages).to include('Shipping time is invalid. Please select the appropriate value')
       end
 
       it 'priceが空では出品できない' do
         @item.price = ''
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price can't be blank")
+        expect(@item.errors.full_messages).to include('Price is invalid. Input integer with half-width numbers')
       end
 
       it 'priceが299以下では出品できない' do
         @item.price = 299
         @item.valid?
-        expect(@item.errors.full_messages).to include('Price は半角数字で¥300~¥9,999,999の間のみ入力できます')
+        expect(@item.errors.full_messages).to include('Price is out of setting range')
       end
 
       it 'priceが10,000,000以上では出品できない' do
         @item.price = 10_000_000
         @item.valid?
-        expect(@item.errors.full_messages).to include('Price は半角数字で¥300~¥9,999,999の間のみ入力できます')
+        expect(@item.errors.full_messages).to include('Price is out of setting range')
       end
 
       it 'priceが全角数字では出品できない' do
         @item.price = '３００'
         @item.valid?
-        expect(@item.errors.full_messages).to include('Price は半角数字で¥300~¥9,999,999の間のみ入力できます')
+        expect(@item.errors.full_messages).to include('Price is invalid. Input integer with half-width numbers')
+      end
+
+      it 'priceが小数点以下を含む場合は出品できない' do
+        @item.price = 300.5
+        @item.valid?
+        expect(@item.errors.full_messages).to include('Price is invalid. Input integer with half-width numbers')
       end
 
       it 'userが紐づいていないと出品できない' do

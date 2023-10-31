@@ -12,13 +12,13 @@ class Item < ApplicationRecord
   has_one_attached :image
 
   # バリデーション
-  validates :image,            presence: true # 商品の画像
+  validates :image,            presence: true                            # 商品の画像
 
-  validates :item_name,        presence: true, length: { maximum: 40 } # 商品名
+  validates :item_name,        presence: true, length: { maximum: 40 }   # 商品名
 
   validates :item_description, presence: true, length: { maximum: 1000 } # 商品の説明
 
-  with_options numericality: { other_than: 1, message: "can't be blank" } do
+  with_options numericality: { other_than: 1, message: 'is invalid. Please select the appropriate value' } do
     validates :category_id       # カテゴリー
 
     validates :condition_id      # 商品の状態
@@ -30,7 +30,8 @@ class Item < ApplicationRecord
     validates :shipping_time_id  # 発送までの日数
   end
 
-  validates :price, numericality: { only_integer: true, message: 'is invalid. Input integer with half-width numbers' }  # 価格
-  validates :price, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999, message: 'is out of setting range' }
-
+  # 価格
+  validates :price, numericality: { only_integer: true, message: 'is invalid. Input integer with half-width numbers' }
+  validates :price,
+            numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999, message: 'is out of setting range' }
 end
