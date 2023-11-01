@@ -46,6 +46,8 @@ GEM
       erubi (~> 1.4)
       rails-dom-testing (~> 2.0)
       rails-html-sanitizer (~> 1.1, >= 1.2.0)
+    active_hash (3.2.1)
+      activesupport (>= 5.0.0)
     activejob (7.0.8)
       activesupport (= 7.0.8)
       globalid (>= 0.3.6)
@@ -135,6 +137,7 @@ GEM
     marcel (1.0.2)
     matrix (0.4.2)
     method_source (1.0.0)
+    mini_magick (4.12.0)
     mini_mime (1.1.5)
     minitest (5.20.0)
     msgpack (1.7.2)
@@ -299,6 +302,7 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
+  active_hash
   bootsnap
   capybara
   debug
@@ -308,6 +312,7 @@ DEPENDENCIES
   gimei
   importmap-rails
   jbuilder
+  mini_magick
   mysql2 (~> 0.5)
   pg
   pry-rails

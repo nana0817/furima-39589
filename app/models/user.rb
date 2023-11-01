@@ -22,4 +22,7 @@ class User < ApplicationRecord
 
   # 生年月日のバリデーション
   validates :date_of_birth, presence: true
+
+  # アソシエーション
+  has_many :items
 end
