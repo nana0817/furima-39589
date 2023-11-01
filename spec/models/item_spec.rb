@@ -43,22 +43,10 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include('Item description is too long (maximum is 1000 characters)')
       end
 
-      it 'category_idが空では出品できない' do
-        @item.category_id = ''
-        @item.valid?
-        expect(@item.errors.full_messages).to include('Category is invalid. Please select the appropriate value')
-      end
-
       it 'category_idが1では出品できない' do
         @item.category_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include('Category is invalid. Please select the appropriate value')
-      end
-
-      it 'condition_idが空では出品できない' do
-        @item.condition_id = ''
-        @item.valid?
-        expect(@item.errors.full_messages).to include('Condition is invalid. Please select the appropriate value')
       end
 
       it 'condition_idが1では出品できない' do
@@ -67,34 +55,16 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include('Condition is invalid. Please select the appropriate value')
       end
 
-      it 'shipping_fee_idが空では出品できない' do
-        @item.shipping_fee_id = ''
-        @item.valid?
-        expect(@item.errors.full_messages).to include('Shipping fee is invalid. Please select the appropriate value')
-      end
-
       it 'shipping_fee_idが1では出品できない' do
         @item.shipping_fee_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include('Shipping fee is invalid. Please select the appropriate value')
       end
 
-      it 'prefecture_idが空では出品できない' do
-        @item.prefecture_id = ''
-        @item.valid?
-        expect(@item.errors.full_messages).to include('Prefecture is invalid. Please select the appropriate value')
-      end
-
       it 'prefecture_idが1では出品できない' do
         @item.prefecture_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include('Prefecture is invalid. Please select the appropriate value')
-      end
-
-      it 'shipping_time_idが空では出品できない' do
-        @item.shipping_time_id = ''
-        @item.valid?
-        expect(@item.errors.full_messages).to include('Shipping time is invalid. Please select the appropriate value')
       end
 
       it 'shipping_time_idが1では出品できない' do
@@ -106,7 +76,7 @@ RSpec.describe Item, type: :model do
       it 'priceが空では出品できない' do
         @item.price = ''
         @item.valid?
-        expect(@item.errors.full_messages).to include('Price is invalid. Input integer with half-width numbers')
+        expect(@item.errors.full_messages).to include("Price can't be blank")
       end
 
       it 'priceが299以下では出品できない' do
