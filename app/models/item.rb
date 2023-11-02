@@ -32,8 +32,10 @@ class Item < ApplicationRecord
 
   # 価格
   validates :price, presence: true
-  validates :price, numericality: { allow_blank: true, only_integer: true,
-                                    message: 'is invalid. Input integer with half-width numbers' }
-  validates :price, numericality: { allow_blank: true, greater_than_or_equal_to: 300,
-                                    less_than_or_equal_to: 9_999_999, message: 'is out of setting range' }
+  validates :price, numericality: {
+    allow_blank: true,
+    only_integer: { message: 'is invalid. Input integer with half-width numbers' },
+    greater_than_or_equal_to: 300,
+    less_than_or_equal_to: 9_999_999
+  }
 end
