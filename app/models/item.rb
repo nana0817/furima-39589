@@ -1,6 +1,7 @@
 class Item < ApplicationRecord
   # アソシエーション
   belongs_to :user
+  has_one :order
 
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :category
@@ -18,7 +19,7 @@ class Item < ApplicationRecord
 
   validates :item_description, presence: true, length: { maximum: 1000 } # 商品の説明
 
-  with_options numericality: { other_than: 1, message: 'is invalid. Please select the appropriate value' } do
+  with_options numericality: { other_than: 0, message: 'is invalid. Please select the appropriate value' } do
     validates :category_id       # カテゴリー
 
     validates :condition_id      # 商品の状態
