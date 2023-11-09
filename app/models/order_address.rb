@@ -12,8 +12,9 @@ class OrderAddress
     validates :street_address
     validates :order_id
   end
-  validates :telephone_number, numericality: { only_integer: true, message: "は、半角数値のみ登録可能です。" }, 
-                               length: { in: 10..11, message: "は、10桁以上11桁以内で登録可能です。" }
+  validates :telephone_number, presence: true
+  validates :telephone_number, numericality: { allow_blank: true, only_integer: true, message: "は、半角数値のみ登録可能です。" }, 
+                                     length: { allow_blank: true, in: 10..11, message: "は、10桁以上11桁以内で登録可能です。" }
   validates :prefecture_id, numericality: { other_than: 0, message: "に、適切な値を選択してください。" }
 
   # データをテーブルに保存する処理
