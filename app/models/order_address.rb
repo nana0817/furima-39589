@@ -1,7 +1,7 @@
 class OrderAddress
   include ActiveModel::Model # モデルの一部機能(form_withメソッドに対応する機能とバリデーションを行う機能)を、作成したクラスに持たせる
   attr_accessor :user_id, :item_id, :post_code, :prefecture_id, :municipalities, :street_address, :building_name, 
-                :telephone_number, :order_id # 保存したいカラム名を属性値として扱えるようにする
+                :telephone_number, :token # 保存したいカラム名を属性値として扱えるようにする
   
   # バリデーション
   with_options presence: true do
@@ -10,7 +10,7 @@ class OrderAddress
     validates :post_code, format: { with: /\A[0-9]{3}-[0-9]{4}\z/, message: "は無効です。ハイフン(-)を含めてください。" }
     validates :municipalities
     validates :street_address
-    validates :order_id
+    validates :token
   end
   validates :telephone_number, presence: true
   validates :telephone_number, numericality: { allow_blank: true, only_integer: true, message: "は、半角数値のみ登録可能です。" }, 
