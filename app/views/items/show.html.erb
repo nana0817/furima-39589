@@ -3,40 +3,38 @@
 <div class="item-show">
   <div class="item-box">
     <h2 class="name">
-      <%= @item.item_name %>
+      <%= @item.item_name %>  <%# 商品名 %>
     </h2>
     <div class="item-img-content">
-      <%= image_tag @item.image, class:"item-box-img" %>
-      <%# 商品が売れている場合は、sold outを表示しましょう %>
-      <div class="sold-out">
-        <span>Sold Out!!</span>
-      </div>
-      <%# //商品が売れている場合は、sold outを表示しましょう %>
+      <%= image_tag @item.image, class:"item-box-img" %>  <%# 商品の画像 %>
+      <% if Order.exists?(item_id: @item.id) %>  <%# sold-out表示の条件分岐 %>
+        <div class="sold-out">
+          <span>Sold Out!!</span>
+        </div>
+      <% end %>
     </div>
     <div class="item-price-box">
       <span class="item-price">
-        ¥<%= @item.price %>
+        ¥<%= @item.price %>  <%# 商品の価格 %>
       </span>
       <span class="item-postage">
-        <%= ShippingFee.data[@item.shipping_fee_id - 1][:name] %>
+        <%= ShippingFee.data[@item.shipping_fee_id - 1][:name] %>  <%# 配送料の負担 %>
       </span>
     </div>
 
-    <% if user_signed_in? %> <%# ログインしてるかどうか %>
-      <% if current_user.id == @item.user_id %> <%# ログインユーザーと出品者が同じ %>
+    <% if (user_signed_in?) && (!Order.exists?(item_id: @item.id)) %>  <%# ログインしているか、その商品が売却済みでないか %>
+      <% if current_user.id == @item.user_id %>  <%# ログインユーザーと出品者が同じ %>
         <%= link_to "商品の編集", edit_item_path(@item.id), method: :get, class: "item-red-btn" %>
         <p class="or-text">or</p>
         <%= link_to "削除", item_path(@item.id), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, 
                                                  class:"item-destroy" %>
-      <% else %> <%# ログインユーザーと出品者が違う %>
-        <%# 商品が売れていない場合はこちらを表示しましょう %>
-        <%= link_to "購入画面に進む", item_orders_path(@item.id),data: { turbo: false },class:"item-red-btn"%>
-        <%# //商品が売れていない場合はこちらを表示しましょう %>
+      <% else %>  <%# ログインユーザーと出品者が違う %>
+        <%= link_to "購入画面に進む", item_orders_path(@item.id), data: { turbo: false }, class:"item-red-btn"%>
       <% end %>
     <% end %>
 
     <div class="item-explain-box">
-      <span><%= @item.item_description %></span>
+      <span><%= @item.item_description %></span>  <%# 商品の説明 %>
     </div>
     <table class="detail-table">
       <tbody>
