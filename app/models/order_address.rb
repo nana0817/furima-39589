@@ -10,9 +10,10 @@ class OrderAddress
     validates :post_code, format: { with: /\A[0-9]{3}-[0-9]{4}\z/, message: 'は無効です。ハイフン(-)を含めてください。' }
     validates :municipalities
     validates :street_address
+    validates :telephone_number
     validates :token
   end
-  validates :telephone_number, presence: true
+
   validates :telephone_number, numericality: { allow_blank: true, only_integer: true, message: 'は、半角数値のみ登録可能です。' },
                                length: { allow_blank: true, in: 10..11, message: 'は、10桁以上11桁以内で登録可能です。' }
   validates :prefecture_id, numericality: { other_than: 0, message: 'に、適切な値を選択してください。' }
