@@ -18,7 +18,7 @@
         ¥<%= @item.price %>  <%# 商品の価格 %>
       </span>
       <span class="item-postage">
-        <%= ShippingFee.data[@item.shipping_fee_id][:name] %>  <%# 配送料の負担 %>
+        <%= @item.shipping_fee.name %>  <%# 配送料の負担 %>
       </span>
     </div>
 
@@ -44,23 +44,23 @@
         </tr>
         <tr>
           <th class="detail-item">カテゴリー</th>
-          <td class="detail-value"><%= Category.data[@item.category_id][:name] %></td>
+          <td class="detail-value"><%= @item.category.name %></td>
         </tr>
         <tr>
           <th class="detail-item">商品の状態</th>
-          <td class="detail-value"><%= Condition.data[@item.condition_id][:name] %></td>
+          <td class="detail-value"><%= @item.condition.name %></td>
         </tr>
         <tr>
           <th class="detail-item">配送料の負担</th>
-          <td class="detail-value"><%= ShippingFee.data[@item.shipping_fee_id][:name] %></td>
+          <td class="detail-value"><%= @item.shipping_fee.name %></td>
         </tr>
         <tr>
           <th class="detail-item">発送元の地域</th>
-          <td class="detail-value"><%= Prefecture.data[@item.prefecture_id][:name] %></td>
+          <td class="detail-value"><%= @item.prefecture.name %></td>
         </tr>
         <tr>
           <th class="detail-item">発送日の目安</th>
-          <td class="detail-value"><%= ShippingTime.data[@item.shipping_time_id][:name] %></td>
+          <td class="detail-value"><%= @item.shipping_time.name %></td>
         </tr>
       </tbody>
     </table>
@@ -98,7 +98,7 @@
       後ろの商品 ＞
     </a>
   </div>
-  <a href="#" class="another-item"><%= Condition.data[@item.condition_id][:name] %>をもっと見る</a>
+  <a href="#" class="another-item"><%= @item.condition.name %>をもっと見る</a>
 </div>
 
 <%= render "shared/footer" %>
