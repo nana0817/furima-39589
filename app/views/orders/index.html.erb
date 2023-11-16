@@ -18,7 +18,7 @@
             ¥<%= Item.find(params[:item_id]).price %>
           </p>
           <p class='item-price-sub-text'>
-            <%= ShippingFee.data[Item.find(params[:item_id]).shipping_fee_id - 1][:name] %>
+            <%= @item.shipping_fee.name %>
           </p>
         </div>
       </div>
