@@ -144,7 +144,7 @@
                 <%= item.item_name %>  <%# 商品名 %>
               </h3>
               <div class='item-price'>
-                <span><%= item.price %>円<br><%= ShippingFee.data[item.shipping_fee_id - 1][:name] %></span>  <%# 商品の価格 %>
+                <span><%= item.price %>円<br><%= ShippingFee.data[item.shipping_fee_id][:name] %></span>  <%# 商品の価格、配送料の負担 %>
                 <div class='star-btn'>
                   <%= image_tag "star.png", class:"star-icon" %>
                   <span class='star-count'>0</span>
