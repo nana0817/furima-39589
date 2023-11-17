@@ -1,6 +1,7 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!, only: [:index]
-  before_action :are_seller,         only: [:index]
+  before_action :are_seller?,         only: [:index]
+  before_action :exist_item?,         only: [:index]
 
   def index
     gon.public_key = ENV['PAYJP_PUBLIC_KEY']
@@ -21,9 +22,15 @@ class OrdersController < ApplicationController
 
   private
 
-  def are_seller
+  def are_seller?
     @item = Item.find(params[:item_id])
     return unless current_user.id == @item.user_id
+
+    redirect_to root_path
+  end
+
+  def exist_item?
+    return unless Order.exists?(item_id: @item.id)
 
     redirect_to root_path
   end
