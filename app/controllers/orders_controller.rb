@@ -1,5 +1,6 @@
 class OrdersController < ApplicationController
-  before_action :authenticate_user!, only: [:index]
+  before_action :authenticate_user!,  only: [:index]
+  before_action :find_item,           only: [:index, :create]
   before_action :are_seller?,         only: [:index]
   before_action :exist_item?,         only: [:index]
 
@@ -22,8 +23,11 @@ class OrdersController < ApplicationController
 
   private
 
-  def are_seller?
+  def find_item
     @item = Item.find(params[:item_id])
+  end
+
+  def are_seller?
     return unless current_user.id == @item.user_id
 
     redirect_to root_path
