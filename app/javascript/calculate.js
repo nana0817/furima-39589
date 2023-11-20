@@ -8,10 +8,11 @@ const calculate = () => {
     const inputValue = priceInput.value;
 
     // 「販売手数料」に表示する値
-    taxPrice.innerHTML = Math.floor(inputValue * 0.1);
+    const salesFee = Math.floor(inputValue * 0.1);
+    taxPrice.innerHTML = salesFee;
 
     // 「販売利益」に表示する値
-    profit.innerHTML = Math.floor(inputValue - inputValue * 0.1);
+    profit.innerHTML = inputValue - salesFee;
 
   });
 };
