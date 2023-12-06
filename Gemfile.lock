@@ -177,7 +177,6 @@ GEM
       racc
     payjp (0.0.10)
       rest-client (~> 2.0)
-    pg (1.5.4)
     pry (0.14.2)
       coderay (~> 1.1)
       method_source (~> 1.0)
@@ -309,7 +308,7 @@ GEM
       concurrent-ruby (~> 1.0)
     unf (0.1.4)
       unf_ext
-    unf_ext (0.0.9)
+    unf_ext (0.0.7.7)
     unicode-display_width (2.5.0)
     unicorn (6.1.0)
       kgio (~> 2.6)
@@ -347,7 +346,6 @@ DEPENDENCIES
   mini_magick
   mysql2 (~> 0.5)
   payjp
-  pg
   pry-rails
   puma (~> 5.0)
   rails (~> 7.0.0)
@@ -362,6 +360,7 @@ DEPENDENCIES
   stimulus-rails
   turbo-rails
   tzinfo-data
+  unf_ext (= 0.0.7.7)
   unicorn (= 6.1.0)
   web-console
 
